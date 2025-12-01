@@ -1,0 +1,3 @@
+name: dotproduct
+version: 1.0.0
+description: "Tesseract that computes dot product and cosine similarity between two vectors."
