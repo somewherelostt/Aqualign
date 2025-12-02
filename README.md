@@ -5,11 +5,11 @@ A ready-to-use template for building projects with [Tesseract Core](https://gith
 > [!WARNING]
 > Using this template is *not* required to participate in the Hackathon. You may use any tools at your disposal, including [Tesseract Core](https://github.com/pasteurlabs/tesseract-core), [Tesseract-JAX](https://github.com/pasteurlabs/tesseract-jax), and [Tesseract-Streamlit](https://github.com/pasteurlabs/tesseract-streamlit) — or composing Tesseracts via `docker run` calls in a glorified shell script. Your imagination is the limit!
 
-#### See also
-[[Tesseract Core Documentation](https://github.com/pasteurlabs/tesseract-core)] |
-[[Tesseract-JAX Documentation](https://github.com/pasteurlabs/tesseract-jax)] |
-[[Tesseract showcase](https://si-tesseract.discourse.group/c/showcase/11)] |
-[[Get help @ Tesseract User Forums](https://si-tesseract.discourse.group/)]
+**See also**:
+[Tesseract Core Documentation](https://github.com/pasteurlabs/tesseract-core) |
+[Tesseract-JAX Documentation](https://github.com/pasteurlabs/tesseract-jax) |
+[Tesseract showcase](https://si-tesseract.discourse.group/c/showcase/11) |
+[Get help @ Tesseract User Forums](https://si-tesseract.discourse.group/)
 
 ## Overview
 
