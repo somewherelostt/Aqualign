@@ -3,13 +3,13 @@
 A ready-to-use template for building projects with [tesseract-core](https://github.com/pasteurlabs/tesseract-core) and [tesseract-jax](https://github.com/pasteurlabs/tesseract-jax), featuring two interacting tesseracts that demonstrate vector scaling and similarity computation. Can be used as a starting point for participants of the [Tesseract Hackathon](link TODO).
 
 > [!NOTE]
-> Using this template is *not* required to participate in the Hackathon. You may use any tools at your disposal, including [Tesseract Core](https://github.com/pasteurlabs/tesseract-core), [Tesseract-JAX](https://github.com/pasteurlabs/tesseract-jax), and [Tesseract-Streamlit](https://github.com/pasteurlabs/tesseract-streamlit) --- or composing Tesseracts via `docker run` calls in a glorified shell script. Your imagination is the limit!## Resources
+> Using this template is *not* required to participate in the Hackathon. You may use any tools at your disposal, including [Tesseract Core](https://github.com/pasteurlabs/tesseract-core), [Tesseract-JAX](https://github.com/pasteurlabs/tesseract-jax), and [Tesseract-Streamlit](https://github.com/pasteurlabs/tesseract-streamlit) — or composing Tesseracts via `docker run` calls in a glorified shell script. Your imagination is the limit!
 
 #### See also
-[Tesseract Core Documentation](https://github.com/pasteurlabs/tesseract-core) |
-[Tesseract-JAX Documentation](https://github.com/pasteurlabs/tesseract-jax) |
-[JAX Documentation](https://jax.readthedocs.io/) |
-[Get help @ Tesseract User Forums](https://si-tesseract.discourse.group/)
+[[Tesseract Core Documentation]](https://github.com/pasteurlabs/tesseract-core) |
+[[Tesseract-JAX Documentation]](https://github.com/pasteurlabs/tesseract-jax) |
+[[JAX Documentation]](https://jax.readthedocs.io/) |
+[[Get help @ Tesseract User Forums]](https://si-tesseract.discourse.group/)
 
 ## Overview
 
@@ -81,6 +81,6 @@ Running `python main.py` demonstrates two paths:
 
 Apache License 2.0 - See [LICENSE](LICENSE) file for details.
 
----
-
-**Happy Hacking!** 🚀
+<p align="center">
+<b>Happy Hacking!</b> 🚀
+</p>
