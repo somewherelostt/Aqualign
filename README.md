@@ -30,6 +30,18 @@ Example Tesseracts are minimal and meant as starting point for you to build upon
    - Calculates cosine similarity.
    - Uses the [Tesseract JAX recipe](https://docs.pasteurlabs.ai/projects/tesseract-core/latest/content/creating-tesseracts/create.html#initialize-a-new-tesseract) to enable automatic differentiation.
 
+### Pipeline Demo
+
+The example script [`main.py`](main.py) demonstrates two ways to compose Tesseracts into pipelines.
+
+#### Path 1: Calling Tesseracts manually
+
+- Call Tesseracts via [Tesseract Core SDK](https://docs.pasteurlabs.ai/projects/tesseract-core/latest/content/api/tesseract-api.html).
+
+#### Path 2: Composing Tesseracts with Tesseract-JAX
+
+- Wrap Tesseract calls in a differentiable JAX function using [Tesseract-JAX](https://github.com/pasteurlabs/tesseract-jax).
+
 ## Get Started
 
 ### Prerequisites
@@ -65,17 +77,6 @@ Example Tesseracts are minimal and meant as starting point for you to build upon
    ```bash
    $ python main.py
    ```
-
-
-The example script [`main.py`](main.py) demonstrates two ways to compose Tesseracts into pipelines.
-
-#### Path 1: Calling Tesseracts manually
-
-- Call Tesseracts via [Tesseract Core SDK](https://docs.pasteurlabs.ai/projects/tesseract-core/latest/content/api/tesseract-api.html).
-
-#### Path 2: Composing Tesseracts with Tesseract-JAX
-
-- Wrap Tesseract calls in a differentiable JAX function using [Tesseract-JAX](https://github.com/pasteurlabs/tesseract-jax).
 
 ## Now go and build your own!
 
