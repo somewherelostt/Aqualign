@@ -30,14 +30,14 @@ Example Tesseracts are minimal and meant as starting point for you to build upon
    - Calculates cosine similarity.
    - Uses the [Tesseract JAX recipe](https://docs.pasteurlabs.ai/projects/tesseract-core/latest/content/creating-tesseracts/create.html#initialize-a-new-tesseract) to enable automatic differentiation.
 
-## Quick Start
+## Get Started
 
 ### Prerequisites
 
 - Python 3.10 or higher, ideally with a virtual environment (e.g. via `venv`, `conda`, or `uv`).
 - Working Docker setup for the current user ([Docker Desktop recommended](https://docs.pasteurlabs.ai/projects/tesseract-core/latest/content/introduction/installation.html#installing-docker)).
 
-### Installation
+### Quickstart
 
 1. Create a new repository off this template and clone it
    ```bash
@@ -66,7 +66,6 @@ Example Tesseracts are minimal and meant as starting point for you to build upon
    $ python main.py
    ```
 
-## What the Demo Shows
 
 The example script [`main.py`](main.py) demonstrates two ways to compose Tesseracts into pipelines.
 
