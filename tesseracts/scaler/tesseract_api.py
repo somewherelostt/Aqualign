@@ -5,21 +5,24 @@ This tesseract takes an input vector and a scale factor, returning the scaled ve
 """
 
 from typing import Any
-from typing_extensions import Self
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field
 from tesseract_core.runtime import Array, Differentiable, Float32, ShapeDType
 
 
 class InputSchema(BaseModel):
     """Input schema for a single vector with scale factor"""
+
     vector: Differentiable[Array[(None,), Float32]] = Field(
         description="An arbitrary vector"
     )
-    scale_factor: Float32 = Field(description="A scalar to scale the vector by", default=1.0)
+    scale_factor: Float32 = Field(
+        description="A scalar to scale the vector by", default=1.0
+    )
 
 
 class OutputSchema(BaseModel):
     """Output schema for the scaler tesseract"""
+
     scaled: Differentiable[Array[(None,), Float32]] = Field("Scaled vector")
 
 
@@ -35,19 +38,19 @@ def abstract_eval(abstract_inputs):
 
     return {
         "scaled": ShapeDType(
-            shape=input_vector_shapedtype.shape,
-            dtype=input_vector_shapedtype.dtype
+            shape=input_vector_shapedtype.shape, dtype=input_vector_shapedtype.dtype
         )
     }
 
+
 def vector_jacobian_product(
-        inputs: InputSchema, 
-        vjp_inputs: set[str], 
-        vjp_outputs: set[str], 
-        cotangent_vector: dict[str, Any]
-    ):
+    inputs: InputSchema,
+    vjp_inputs: set[str],
+    vjp_outputs: set[str],
+    cotangent_vector: dict[str, Any],
+):
     """Compute vector-Jacobian product, for use in reverse-mode autodiff (backpropagation).
-    
+
     The VJP is the product of the cotangent vector with the Jacobian matrix, which is a constant in this case.
     """
     assert vjp_inputs == {"vector"}
