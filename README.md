@@ -79,5 +79,10 @@ Aqualign/
 └── main.py                     # Entry Point
 ```
 
+## 🛠️ Tech Stack
+- **PyTorch**: Autograd and tensor operations.
+- **NumPy/SciPy**: Data handling and integration baselines.
+- **Matplotlib**: Visualization of vector fields and trajectories.
+
 ## License
 Apache 2.0
