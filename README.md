@@ -101,6 +101,13 @@ python main.py
 ```
 *Results will be saved to `visualizations/comparison.png`*
 
+### 4. Interactive Dashboard 🆕
+Explore the simulation interactively in your browser.
+```bash
+streamlit run dashboard.py
+```
+Adjust fleet size, time horizon, and optimization parameters on the fly.
+
 ---
 
 ## 🤝 Acknowledgements
