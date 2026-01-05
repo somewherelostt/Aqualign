@@ -4,6 +4,7 @@
 ![License](https://img.shields.io/badge/license-Apache%202.0-blue)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0-orange)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://aqualign.streamlit.app/)
 
 > *“We don’t fight the ocean; we learn to dance with it.”*
 
@@ -103,6 +104,8 @@ python main.py
 
 ### 4. Interactive Dashboard 🆕
 Explore the simulation interactively in your browser.
+**[👉 Launch Live Demo](https://aqualign.streamlit.app/)**
+
 ```bash
 streamlit run dashboard.py
 ```
