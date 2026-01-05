@@ -39,9 +39,11 @@ def run_comparison():
     random_traj = [v_pos.cpu().numpy()]
     random_fuel = torch.sum(random_controls**2).item()
     
+    # Capture radius for evaluation
+    CAPTURE_RADIUS = 1.0
+    
     # Track collected status (boolean mask)
     random_collected_mask = torch.zeros(len(d_pos), dtype=torch.bool, device=device)
-    capture_radius = 1.0
     
     for t in range(steps):
         d_pos = ParticleSimulator.advect_particles(d_pos, field.get_velocity, dt)
@@ -55,7 +57,7 @@ def run_comparison():
         diff = v_pos.unsqueeze(1) - d_pos.unsqueeze(0) # (3, M, 2)
         dists = torch.norm(diff, dim=2) # (3, M)
         min_dists, _ = dists.min(dim=0) # (M,)
-        caught = min_dists < capture_radius
+        caught = min_dists < CAPTURE_RADIUS
         random_collected_mask = random_collected_mask | caught
         
     random_count = random_collected_mask.sum().item()
@@ -87,7 +89,7 @@ def run_comparison():
         diff = v_pos.unsqueeze(1) - d_pos.unsqueeze(0) 
         dists = torch.norm(diff, dim=2) 
         min_dists, _ = dists.min(dim=0)
-        caught = min_dists < capture_radius
+        caught = min_dists < CAPTURE_RADIUS
         opt_collected_mask = opt_collected_mask | caught
         
     opt_count = opt_collected_mask.sum().item()
