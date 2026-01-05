@@ -86,3 +86,6 @@ Aqualign/
 
 ## License
 Apache 2.0
+
+## Acknowledgements
+Built for the **Tesseract Hackathon**. Special thanks to Pasteur Labs for the inspiration and tooling.
