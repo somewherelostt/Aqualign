@@ -1,5 +1,8 @@
 # Aqualign: Differentiable Ocean Cleanup Optimizer
 
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![License](https://img.shields.io/badge/license-Apache%202.0-blue)
+
 **Aqualign** leverages **differentiable physics** and **Simulation Intelligence** to optimize ocean cleanup operations. By backpropagating through a fluid dynamics simulation, we autonomously learn vessel trajectories that maximize debris collection while minimizing fuel consumption.
 
 ![Results](visualizations/comparison.png)
