@@ -73,6 +73,7 @@ class RouteOptimizer(nn.Module):
         loss_fuel = torch.sum(self.controls ** 2)
         
         w_coll = 1.0
+        # Fuel weight set low to encourage active tracking of debris
         w_fuel = 0.001 
         
         loss = w_coll * loss_collection + w_fuel * loss_fuel
