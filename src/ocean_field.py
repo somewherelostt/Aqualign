@@ -3,6 +3,10 @@ import numpy as np
 import os
 
 class OceanField:
+    """
+    Differentiable Ocean Environment.
+    Loads velocity data and provides bilinear interpolation for particle advection.
+    """
     def __init__(self, data_path='data/gulf_stream.npz', device='cpu'):
         self.device = device
         
