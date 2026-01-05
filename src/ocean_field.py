@@ -33,6 +33,9 @@ class OceanField:
         self.grid_u = self.u.unsqueeze(0).unsqueeze(0)
         self.grid_v = self.v.unsqueeze(0).unsqueeze(0)
 
+    def __repr__(self):
+        return f"OceanField(shape={self.u.shape}, device={self.device})"
+
     def get_velocity(self, pos):
         """
         Bilinear interpolation.
