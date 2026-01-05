@@ -23,16 +23,16 @@ def generate_synthetic_data():
     strength = 2.0 * np.exp(-r / 15.0)
     
     # Counter-clockwise flow
-    u = -strength * norm_y
-    v = strength * norm_x
+    u_vel = -strength * norm_y
+    v_vel = strength * norm_x
     
     # Add eddies
-    u += 0.3 * np.sin(0.4 * X) * np.cos(0.4 * Y)
-    v += 0.3 * np.cos(0.4 * X) * np.sin(0.4 * Y)
+    u_vel += 0.3 * np.sin(0.4 * X) * np.cos(0.4 * Y)
+    v_vel += 0.3 * np.cos(0.4 * X) * np.sin(0.4 * Y)
     
     # Save
     os.makedirs('data', exist_ok=True)
-    np.savez('data/gulf_stream.npz', u=u, v=v, x=x, y=y)
+    np.savez('data/gulf_stream.npz', u=u_vel, v=v_vel, x=x, y=y)
     print("Saved data/gulf_stream.npz")
 
 if __name__ == "__main__":
