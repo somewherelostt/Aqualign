@@ -34,6 +34,7 @@ def generate_synthetic_data():
     os.makedirs('data', exist_ok=True)
     np.savez('data/gulf_stream.npz', u=u_vel, v=v_vel, x=x, y=y)
     print("Saved data/gulf_stream.npz")
+    print("Synthetic data generation complete.")
 
 if __name__ == "__main__":
     generate_synthetic_data()
