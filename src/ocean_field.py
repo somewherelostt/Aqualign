@@ -7,7 +7,7 @@ class OceanField:
     Differentiable Ocean Environment.
     Loads velocity data and provides bilinear interpolation for particle advection.
     """
-    def __init__(self, data_path='data/gulf_stream.npz', device='cpu'):
+    def __init__(self, data_path: str = 'data/gulf_stream.npz', device: str = 'cpu'):
         self.device = device
         
         if not os.path.exists(data_path):
