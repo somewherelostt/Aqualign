@@ -15,6 +15,7 @@ def run_comparison():
     num_vessels = 3
     steps = 72
     dt = 1.0
+    SEED = 42
     
     # Initial State
     # Vessels start at different locations
@@ -25,7 +26,7 @@ def run_comparison():
     ], device=device)
     
     # Debris Field (Random cluster)
-    torch.manual_seed(42)
+    torch.manual_seed(SEED)
     debris_center = torch.tensor([25.0, 25.0], device=device)
     # Widen spread so vessels can sense it
     debris_pos = debris_center + torch.randn(200, 2, device=device) * 15.0
