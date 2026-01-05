@@ -16,73 +16,92 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for "Pro" feel
+# Custom CSS for "Scientific" feel
 st.markdown("""
 <style>
-    /* Main Background */
+    /* Minimalist Dark Theme */
     .stApp {
-        background: linear-gradient(to bottom right, #000428, #004e92);
-        color: white;
+        background-color: #0E1117;
+        color: #FAFAFA;
     }
-    /* Headers */
+    
+    /* Elegant Typography */
+    h1, h2, h3 {
+        font_family: 'SF Pro Display', sans-serif;
+        color: #E0E0E0 !important;
+        font-weight: 600;
+    }
+    
     h1 {
-        font-family: 'Helvetica Neue', sans-serif;
-        font-weight: 800;
-        letter-spacing: -1px;
-        background: -webkit-linear-gradient(0deg, #00f260, #0575E6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 2.5rem;
+        border-bottom: 2px solid #3366ff;
+        padding-bottom: 10px;
+        display: inline-block;
     }
-    h2, h3 {
-        color: #e0e0e0 !important;
-    }
-    /* Sidebar */
+    
+    /* Clean Sidebar */
     [data-testid="stSidebar"] {
-        background-color: rgba(20, 20, 30, 0.9);
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: #161B22;
+        border-right: 1px solid #30363D;
     }
-    /* Metric Cards */
+    
+    /* Professional Metrics */
+    div[data-testid="stMetric"] {
+        background-color: #161B22;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #30363D;
+    }
     [data-testid="stMetricValue"] {
-        font-size: 2.5rem !important;
-        font-weight: 700;
+        font-size: 28px !important;
+        color: #58A6FF !important;
+    }
+    [data-testid="stMetricLabel"] {
+        font-size: 14px !important;
+        color: #8B949E !important;
+    }
+    
+    /* Button Styling */
+    .stButton>button {
+        background-color: #238636;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: 500;
+    }
+    .stButton>button:hover {
+        background-color: #2EA043;
     }
 </style>
 """, unsafe_allow_html=True)
 
 # --- Sidebar ---
 with st.sidebar:
-    st.image("https://img.icons8.com/color/96/000000/tsunami.png", width=60)
-    st.title("Aqualign")
-    st.markdown("_Differentiable Ocean Cleanup_")
+    st.markdown("## ⚙️ Control Panel")
     
-    st.markdown("---")
+    st.markdown("### Fleet Configuration")
+    num_vessels = st.slider("Number of Vessels", 1, 5, 3)
+    time_horizon = st.slider("Simulation Horizon (Hours)", 24, 96, 72)
     
-    st.subheader("⚙️ Simulation Settings")
-    num_vessels = st.slider("Fleet Size", 1, 5, 3, help="Number of cleanup vessels to deploy.")
-    time_horizon = st.slider("Time Horizon (Hours)", 24, 96, 72, help="Simulation duration.")
-    
-    with st.expander("Advanced Parameters"):
-        opt_iterations = st.slider("Iterations", 50, 500, 200)
-        learning_rate = st.number_input("Learning Rate", 0.01, 1.0, 0.1)
-        st.caption("Adjust gradient descent hyperparameters.")
+    st.markdown("### Optimization Parameters")
+    opt_iterations = st.number_input("Gradient Iterations", 50, 500, 200, step=50)
+    learning_rate = st.number_input("Learning Rate", 0.01, 0.5, 0.1, step=0.01)
 
     st.markdown("---")
-    if st.button("🚀 Run Simulation", type="primary", use_container_width=True):
+    
+    if st.button("Initialize & Run Simulation", type="primary", use_container_width=True):
         run_sim = True
     else:
         run_sim = False
         
-    st.markdown("### About")
-    st.info(
-        "Aqualign uses **differentiable physics** to optimize vessel routes, "
-        "surfing ocean currents to maximize debris collection."
-    )
+    st.markdown("---")
+    st.caption("**Aqualign v1.0**\n\nBuilt for Tesseract Hackathon\nPowered by PyTorch & Differentiable Physics")
 
 # --- Main Layout ---
-col_hero, col_logo = st.columns([4, 1])
-with col_hero:
-    st.title("Order from Chaos")
-    st.markdown("### Autonomous Optimization of Cleanup Trajectories")
+st.title("Aqualign")
+st.markdown("#### Autonomous Ocean Cleanup Optimization")
+st.markdown("Comparing **Stochastic Patrols** vs. **Gradient-Based Trajectory Optimization** in a synthetic double-gyre ocean field.")
+st.markdown("---")
 
 # --- Logic ---
 @st.cache_resource
@@ -179,13 +198,16 @@ if run_sim and field:
     # 2. Main Visualization
     st.subheader(f"Trajectory Analysis (T={time_horizon}h)")
     
-    # Dark Theme Plot with Neon colors
+    # Professional Scientific Plot Style
     plt.style.use('dark_background')
-    fig, ax = plt.subplots(figsize=(12, 7))
-    fig.patch.set_facecolor('#0e1117') # Match Streamlit dark theme if default
-    ax.set_facecolor('#0e1117')
+    fig, ax = plt.subplots(figsize=(10, 6))
     
-    # Ocean Field (Subtle)
+    # Very dark grey background for contrast (GitHub Dark Dimmed style)
+    bg_color = '#0d1117'
+    fig.patch.set_facecolor(bg_color)
+    ax.set_facecolor(bg_color)
+    
+    # Ocean Field (Subtle Slate Blue)
     x = np.linspace(0, 50, 25)
     y = np.linspace(0, 50, 25)
     X, Y = np.meshgrid(x, y)
@@ -194,45 +216,46 @@ if run_sim and field:
     U = vel[:, 0].reshape(25, 25)
     V = vel[:, 1].reshape(25, 25)
     
-    ax.streamplot(X, Y, U, V, color='#ffffff26', linewidth=0.5, density=0.8, arrowsize=0.5)
+    # Subtle streamplot
+    ax.streamplot(X, Y, U, V, color='#30363d', linewidth=0.8, density=0.8, arrowsize=0.6)
     
     # Trajectories
     random_traj = np.array(random_traj)
     opt_traj = np.array(opt_traj)
     
-    # We plot the full path
+    # Plot Paths
     for i in range(num_vessels):
-        # Random - Dashed Red/Orange
-        ax.plot(random_traj[:, i, 0], random_traj[:, i, 1], color='#ff4b4b', linestyle='--', linewidth=1.5, alpha=0.6, label='Random Patrol' if i==0 else "")
-        # Aqualign - Glowing Cyan
-        ax.plot(opt_traj[:, i, 0], opt_traj[:, i, 1], color='#00e6e6', linewidth=2.5, alpha=0.9, label='Aqualign AI' if i==0 else "")
-        # Start/End points
-        ax.scatter(opt_traj[-1, i, 0], opt_traj[-1, i, 1], c='#00e6e6', s=40, zorder=5)
+        # Random: Muted coral/orange, dashed
+        ax.plot(random_traj[:, i, 0], random_traj[:, i, 1], 
+                color='#F0883E', linestyle=':', linewidth=1.5, alpha=0.8, 
+                label='Random Patrol' if i==0 else "")
+                
+        # Aqualign: Sharp Electric Blue, solid
+        ax.plot(opt_traj[:, i, 0], opt_traj[:, i, 1], 
+                color='#58A6FF', linewidth=2.0, alpha=0.9, 
+                label='Aqualign Optimization' if i==0 else "")
+                
+        # Endpoints
+        ax.scatter(opt_traj[-1, i, 0], opt_traj[-1, i, 1], c='#58A6FF', s=30, zorder=5)
 
-    # Debris (Scatter)
-    ax.scatter(d_pos[:, 0].numpy(), d_pos[:, 1].numpy(), c='white', s=5, alpha=0.4, label='Debris')
+    # Debris: Clean white dots
+    ax.scatter(d_pos[:, 0].numpy(), d_pos[:, 1].numpy(), c='#FAFAFA', s=10, alpha=0.6, label='Debris Field', marker='.')
     
-    # Styling
+    # Scientific grid and boundaries
     ax.set_xlim(0, 50)
     ax.set_ylim(0, 50)
     ax.set_aspect('equal')
-    ax.grid(False) # Clean look
-    ax.axis('off') # Map style
+    ax.grid(True, color='#30363d', linestyle='--', linewidth=0.5, alpha=0.3)
+    ax.set_xticks([])
+    ax.set_yticks([])
     
-    # Custom Legend
-    leg = ax.legend(loc='upper right', facecolor='#1c2128', edgecolor='#30363d', fontsize='medium')
+    # Clean Legend
+    leg = ax.legend(loc='upper right', frameon=True, facecolor='#161B22', edgecolor='#30363D', fontsize='small')
     for text in leg.get_texts():
-        text.set_color("white")
+        text.set_color("#C9D1D9")
         
     st.pyplot(fig, use_container_width=True)
 
 else:
-    # Empty State / Landing
-    st.info("👈 Adjust settings in the sidebar and click **Run Simulation** to start.")
-    
-    # Placeholder infographic
-    fig, ax = plt.subplots(figsize=(10, 4))
-    fig.patch.set_alpha(0.0)
-    ax.axis('off')
-    ax.text(0.5, 0.5, "Configure & Run", ha='center', va='center', color='white', fontsize=20, alpha=0.3)
-    st.pyplot(fig)
+    # Empty State - Professional
+    st.info("👈 Please initialize the simulation using the control panel.")
