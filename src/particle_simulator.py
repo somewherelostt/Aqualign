@@ -3,6 +3,7 @@ import torch
 class ParticleSimulator:
     """
     Handles differentiable physics for particles and vessels.
+    Supports Runge-Kutta 4 (RK4) and Euler integration schemes.
     """
     @staticmethod
     def advect_particles(positions: torch.Tensor, 
