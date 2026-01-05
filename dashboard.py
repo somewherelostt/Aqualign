@@ -194,7 +194,7 @@ if run_sim and field:
     U = vel[:, 0].reshape(25, 25)
     V = vel[:, 1].reshape(25, 25)
     
-    ax.streamplot(X, Y, U, V, color='#ffffff', linewidth=0.5, density=0.8, arrowsize=0.5, alpha=0.15)
+    ax.streamplot(X, Y, U, V, color='#ffffff26', linewidth=0.5, density=0.8, arrowsize=0.5)
     
     # Trajectories
     random_traj = np.array(random_traj)
